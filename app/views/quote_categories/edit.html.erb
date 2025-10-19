@@ -1,0 +1,12 @@
+<% content_for :title, "Editing quote category" %>
+
+<h1>Editing quote category</h1>
+
+<%= render "form", quote_category: @quote_category %>
+
+<br>
+
+<div>
+  <%= link_to "Show this quote category", @quote_category %> |
+  <%= link_to "Back to quote categories", quote_categories_path %>
+</div>

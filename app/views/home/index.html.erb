@@ -1,0 +1,51 @@
+<h1>MyQuote</h1>
+<p>Find quotes to live by</p>
+<h3>Recently Added Quotes</h3>
+<hr />
+<% @quotes.each do |quote| %>
+  <div class="card bg-body-tertiary" style="margin-bottom:10px">
+    <div class="card-body">
+      <h4 class="card-title">Quote</h4>
+      <p class="card-text">
+        "<%= quote.quote_text %>"
+      </p>
+
+      <p><strong>Author:</strong> 
+        <% if quote.philosopher %>
+          <%= quote.philosopher.phil_first_name %> <%= quote.philosopher.phil_last_name %> 
+          (<%= quote.philosopher.birth_year %> - <%= quote.philosopher.death_year || 'Present' %>)
+        <% else %>
+          Unknown Philosopher
+        <% end %>
+      </p>
+
+      <p><strong>Added by:</strong> 
+        <% if quote.user %>
+          <%= quote.user.first_name %> <%= quote.user.last_name %>
+        <% else %>
+          Unknown User
+        <% end %>
+      </p>
+
+      <p><strong>Publication Year:</strong> <%= quote.pub_year %></p>
+
+      <p><strong>Categories:</strong> 
+        <% if quote.categories.any? %>
+          <ul>
+            <% quote.categories.each do |category| %>
+              <li><%= category.category_name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          No categories assigned
+        <% end %>
+      </p>
+
+      <p><strong>Visibility:</strong> <%= quote.is_public ? "Public" : "Private" %></p>
+
+      <p>
+        <a href="/quotes/<%= quote.id %>">Read full quote</a>
+      </p>
+    </div>
+  </div>
+<% end %>

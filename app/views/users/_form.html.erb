@@ -1,0 +1,53 @@
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being updated:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Only admin can see and modify the following fields -->
+  <% if current_user && current_user.admin? %>  <!-- Check if current_user exists -->
+    <div>
+      <%= form.label :is_admin, "Admin Status" %>
+      <%= form.check_box :is_admin %>
+    </div>
+
+    <div>
+      <%= form.label :status, "User Status" %>
+      <%= form.select :status, ['active', 'inactive'], selected: @user.status %>
+    </div>
+  <% end %>
+
+  <!-- Other user fields that the admin cannot modify -->
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :fname %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :lname %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password_digest %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit "Update User", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+

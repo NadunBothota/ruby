@@ -1,0 +1,47 @@
+<%= form_with(model: quote) do |form| %>
+  <% if quote.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+        <% quote.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :quote_text, style: "display: block" %>
+    <%= form.textarea :quote_text %>
+  </div>
+
+  <div>
+    <%= form.label :pub_year, style: "display: block" %>
+    <%= form.number_field :pub_year %>
+  </div>
+
+  <div>
+    <%= form.label :comment, style: "display: block" %>
+    <%= form.textarea :comment %>
+  </div>
+
+  <div>
+    <%= form.label :is_public, style: "display: block" %>
+    <%= form.checkbox :is_public %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :philosopher_id, style: "display: block" %>
+    <%= form.text_field :philosopher_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

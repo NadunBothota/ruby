@@ -1,0 +1,21 @@
+<!-- views/quotes/my_quotes.html.erb -->
+<h1>My Quotes</h1>
+
+<% if @quotes.any? %>
+  <ul>
+    <% @quotes.each do |quote| %>
+      <li>
+        <p><strong>Quote:</strong> <%= quote.quote_text %></p>
+        <p><strong>Publication Year:</strong> <%= quote.pub_year %></p>
+        <p><strong>Optional Comment:</strong> <%= quote.comment %></p>
+        <p><strong>Philosopher:</strong> <%= quote.philosopher.phil_last_name %> <%= quote.philosopher.phil_last_name %></p>
+        <p><strong>Category:</strong> <%= quote.categories.pluck(:category_text).join(", ") %></p>
+        <%= link_to 'Show', quote_path(quote) %> |
+        <%= link_to 'Edit', edit_quote_path(quote) %> |
+        <%= link_to 'Delete', quote_path(quote), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You haven't submitted any quotes yet.</p>
+<% end %>

@@ -1,0 +1,52 @@
+<h1>Update Your Profile</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red; background-color: #f8d7da; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- First Name Field -->
+  <div style="margin-bottom: 15px;">
+    <%= form.label :first_name, "First Name", style: "font-weight: bold;" %>
+    <%= form.text_field :fname, value: @user.fname, placeholder: 'Enter your first name', style: "padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc;" %>
+  </div>
+
+  <!-- Last Name Field -->
+  <div style="margin-bottom: 15px;">
+    <%= form.label :last_name, "Last Name", style: "font-weight: bold;" %>
+    <%= form.text_field :lname, value: @user.lname, placeholder: 'Enter your last name', style: "padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc;" %>
+  </div>
+
+  <!-- Email Field -->
+  <div style="margin-bottom: 15px;">
+    <%= form.label :email, "Email", style: "font-weight: bold;" %>
+    <%= form.email_field :email, value: @user.email, placeholder: 'Enter your email', style: "padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc;" %>
+  </div>
+
+  <!-- Password Field -->
+  <div style="margin-bottom: 15px;">
+    <%= form.label :password_digest, "Password", style: "font-weight: bold;" %>
+    <%= form.password_field :password, placeholder: 'Enter your new password', style: "padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc;" %>
+  </div>
+
+  <!-- Password Confirmation Field -->
+  <div style="margin-bottom: 20px;">
+    <%= form.label :password_confirmation, "Password Confirmation", style: "font-weight: bold;" %>
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm your password', style: "padding: 10px; width: 100%; box-sizing: border-box; border-radius: 5px; border: 1px solid #ccc;" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div style="text-align: center;">
+    <%= form.submit "Update Profile", style: "background-color: #007bff; color: white; padding: 12px 24px; border: none; cursor: pointer; border-radius: 5px;" %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back to Your Profile', user_path(@user), style: "display: block; margin-top: 20px; text-align: center; font-size: 16px;" %>

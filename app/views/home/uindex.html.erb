@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+<p>Hello <%= session[:first_name] %></p>
+<h3>Standard User Landing Page</h3>
+
+<% if logged_in? %>
+  <%= link_to 'Edit Your Account Details', edit_user_path(current_user), class: 'btn btn-primary' %>
+<% else %>
+  <p>You must be logged in to edit your account details.</p>
+<% end %>

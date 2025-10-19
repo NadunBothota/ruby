@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+<h3>Manage Users</h3>
+<div id="users">
+ <% @users.each do |user| %>
+ <div class="user card mb-4">
+ <div class="card-body">
+ <p class="card-text"><span style="font-weight: 600;">First Name:</span> <%= 
+user.first_name %></p>
+ <p class="card-text"><span style="font-weight: 600;">Last Name:</span> <%= 
+user.last_name %></p>
+ <p class="card-text"><span style="font-weight: 600;">Email:</span> <%= user.email 
+%></p>
+ <p class="card-text"><span style="font-weight: 600;">Status:</span> <%= 
+user.status %></p>
+ <a href="<%= user_path(user) %>" class="btn btn-primary">Manage User</a>
+ </div>
+ </div>
+ <!--
+ <p>
+ <%= link_to "Show this user", user %>
+ </p>
+ -->
+ <% end %>
+</div>
+<!-- removed the equals sign from the line immediately below -->
+<% link_to "New user", new_user_path %>
+
