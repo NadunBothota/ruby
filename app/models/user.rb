@@ -15,7 +15,6 @@ class User < ApplicationRecord
     self.is_admin ||= false   # Default to false for regular users
   end
 
-  # Check if the user is an admin
   def admin?
     self.is_admin
   end
