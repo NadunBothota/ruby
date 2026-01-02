@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:uquotes]  # Ensure user is logged in before accessing uquotes
+  before_action :authenticate_user!, only: [:uquotes]
 
   def index
     @quotes = Quote.includes(:philosopher, :user).limit(5)
@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   def authenticate_user!
     unless session[:user_id]
       flash[:alert] = "You need to log in to access this page."
-      redirect_to login_path  # Redirect to the login page if not logged in
+      redirect_to login_path 
     end
   end
 end
