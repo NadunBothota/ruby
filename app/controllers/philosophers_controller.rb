@@ -15,11 +15,10 @@ class PhilosophersController < ApplicationController
     @philosopher = Philosopher.new
   end
 
-  # GET /philosophers/1/edit
   def edit
   end
 
-  # POST /philosophers or /philosophers.json
+  
   def create
     @philosopher = Philosopher.new(philosopher_params)
 
@@ -34,7 +33,7 @@ class PhilosophersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /philosophers/1 or /philosophers/1.json
+ 
   def update
     respond_to do |format|
       if @philosopher.update(philosopher_params)
@@ -47,7 +46,7 @@ class PhilosophersController < ApplicationController
     end
   end
 
-  # DELETE /philosophers/1 or /philosophers/1.json
+  
   def destroy
     @philosopher.destroy!
 
@@ -58,12 +57,11 @@ class PhilosophersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+   
     def set_philosopher
       @philosopher = Philosopher.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def philosopher_params
       params.expect(philosopher: [ :phil_first_name, :phil_last_name, :birth_year, :death_year, :biography ])
     end
