@@ -1,16 +1,16 @@
 class PhilosophersController < ApplicationController
   before_action :set_philosopher, only: %i[ show edit update destroy ]
 
-  # GET /philosophers or /philosophers.json
+
   def index
     @philosophers = Philosopher.all
   end
 
-  # GET /philosophers/1 or /philosophers/1.json
+
   def show
   end
 
-  # GET /philosophers/new
+ 
   def new
     @philosopher = Philosopher.new
   end
