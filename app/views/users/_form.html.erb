@@ -10,8 +10,8 @@
     </div>
   <% end %>
 
-  <!-- Only admin can see and modify the following fields -->
-  <% if current_user && current_user.admin? %>  <!-- Check if current_user exists -->
+  
+  <% if current_user && current_user.admin? %>  
     <div>
       <%= form.label :is_admin, "Admin Status" %>
       <%= form.check_box :is_admin %>
