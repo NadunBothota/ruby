@@ -15,13 +15,13 @@
         <li class="nav-item">
           <%= link_to 'About Us', about_path, class:"nav-link" %>
         </li>
-        <!-- Sign Up link: -->
+        
         <% if !logged_in? %>
           <li class="nav-item">
             <%= link_to 'Sign Up', new_user_path, class:"nav-link" %>
           </li>
         <% end %>
-        <!-- Sign In link: -->
+      
         <% if !logged_in? %>
           <li class="nav-item">
             <%= link_to 'Sign In', login_path, class:"nav-link" %>
